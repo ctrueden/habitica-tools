@@ -80,6 +80,7 @@ for slot, item in str_gear.items():
 log.info("Applying DPS...")
 for t in range(smash_count):
     task = tasks[t % len(tasks)]
+    time.sleep(2.8) # NB: Mitigate rate limit causing 401s.
     result = session.cast('smash', task['id'])
     log.info(f"* Smashed '{task['text']}' " +
         f"({round(task['value'], 1)} -> " +
