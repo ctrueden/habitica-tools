@@ -7,6 +7,7 @@ Usage: python autofeed.py
 import logging
 import math
 import sys
+import time
 
 import habitica
 
