@@ -55,3 +55,7 @@ quest_count = sum(v in profile['achievements']['quests'].values())
 print(f"Your username is: {profile['auth']['local']['username']}")
 print(f"You own {quest_count} quest scrolls.")
 ```
+
+## Alternatives
+
+* [Habitipy](https://github.com/ASMfreaK/habitipy)
