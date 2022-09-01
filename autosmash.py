@@ -8,6 +8,7 @@ Where "38" is the number of smashes to perform.
 
 import logging
 import sys
+import time
 
 import habitica
 
