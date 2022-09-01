@@ -85,7 +85,7 @@ for t in range(smash_count):
     result = session.cast('smash', task['id'])
     log.info(f"* Smashed '{task['text']}' " +
         f"({round(task['value'], 1)} -> " +
-        f"{round(result['task']['value'], 1)}")
+        f"{round(result['task']['value'], 1)})")
 
 # Restore original equipment.
 log.info("Restoring original gear...")
