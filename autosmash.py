@@ -49,9 +49,9 @@ profile = session.profile('items,stats')
 needed_mana = 10 * smash_count
 mana = profile['stats']['mp']
 if needed_mana > mana:
-    log.error("You need {needed_mana} mana, but only have {mana}!")
+    log.error(f"You need {needed_mana} mana, but only have {mana}!")
     sys.exit(3)
-log.info("Will use {needed_mana} of {mana} mana.")
+log.info(f"Will use {needed_mana} of {mana} mana.")
 
 # Equip best STR gear.
 log.info("Equipping best STR gear...")
