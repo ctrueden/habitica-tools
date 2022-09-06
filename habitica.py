@@ -3,7 +3,8 @@ The habitica module provides a general-purpose Python library for
 interacting with Habitica via its API (https://habitica.com/api).
 
 It currently implements only a small subset of the available API functions.
-But the groundwork is in place to add more functions easily as needed.
+But the groundwork is in place to add more functions easily as needed;
+see https://habitica.com/apidoc/ for Habitica's API documentation.
 """
 import json, os
 import requests
@@ -87,7 +88,7 @@ class HabiticaSession:
         return self._get('https://habitica.com/api/v3/groups/party')
 
 
-    # -- Tasks --
+    # -- Task --
 
 
     def tasks(self, task_type=None, due_date=None):
