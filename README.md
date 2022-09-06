@@ -10,6 +10,10 @@ This repository contains a general-purpose Habitica session class for Python
 * `autofeed.py` - Automatically uses the optimal food on all pets that need
   feeding, to advance them toward becoming mounts as efficiently as possible.
 
+* `autoquest.py` - Waits until the given time, then invites your party to the
+  specified quest, then ensures it starts (forcing if needed) within the
+  specified amount of time afteward.
+
 The only dependency is `requests`.
 
 ## Configuring credentials
@@ -44,6 +48,19 @@ python autofeed.py
 
 No options. The script feeds the optimal food to the first pet that needs it,
 repeatedly, until no more optimal food/pet pairings remain in your inventory.
+
+## Autoquest
+
+```shell
+python autoquest.py quest-id invite-time force-start-after
+```
+where:
+* `quest-id` is the quest ID string.
+* `invite-time` is an `HH:MM` timestamp e.g. `23:10`.
+* `force-start-after` is a number of minutes before forcing it to start.
+
+If you run `python autoquest.py` with no arguments,
+the program lists the IDs of quests that you own.
 
 ## Using the session API
 

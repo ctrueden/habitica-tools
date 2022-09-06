@@ -88,6 +88,28 @@ class HabiticaSession:
         return self._get('https://habitica.com/api/v3/groups/party')
 
 
+    # -- Quest --
+
+
+    def invite_quest(self, quest_key, group_id='party'):
+        """
+        Invite users to a quest.
+
+        :param group_id: The group_id (or 'party')
+        :param quest_key:
+        """
+        return self._post(f'https://habitica.com/api/v3/groups/{group_id}/quests/invite/{quest_key}')
+
+
+    def force_start_quest(self, group_id='party'):
+        """
+        Force-start a pending quest.
+
+        :param group_id: The group_id (or 'party')
+        """
+        return self._post(f'https://habitica.com/api/v3/groups/{group_id}/quests/force-start')
+
+
     # -- Task --
 
 
