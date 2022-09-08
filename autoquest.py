@@ -47,7 +47,9 @@ def parse_timestamp(ts):
     try:
         now = datetime.datetime.now()
         hhmm = datetime.datetime.strptime(ts, '%H:%M')
-        return datetime.datetime(year=now.year, month=now.month, day=now.day, hour=hhmm.hour, minute=hhmm.minute)
+        then = datetime.datetime(year=now.year, month=now.month, day=now.day, hour=hhmm.hour, minute=hhmm.minute)
+        if now >= then: then += datetime.timedelta(days=1)
+        return then
     except ValueError:
         log.error(f"Invalid timestamp '{ts}'; expected HH:MM format.")
         sys.exit(ExitCodes.INVALID_TIMESTAMP.value)
