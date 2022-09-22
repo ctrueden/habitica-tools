@@ -119,6 +119,9 @@ for food, count in foods.items():
         if score < 0:
             log.debug(f"We do not have {pet}")
             continue
+        if score >= 50:
+            log.debug(f"{pet} is already full")
+            continue
         if pet in mounts and mounts[pet] is True:
             log.debug(f"We already have {pet} as a mount")
             continue
@@ -139,6 +142,7 @@ for food, count in foods.items():
         log.info(f"Feeding {food} x{amount} to {pet}...")
         time.sleep(2.1) # NB: Mitigate rate limit causing 401s.
         session.feed(pet, food, amount)
+        pets[pet] += 5 * amount
         count -= amount
         if count == 0: break
 
