@@ -1,7 +1,7 @@
 """
 A script to start a quest at a particular time.
 
-Usage: python autoquest.py quest-id invite-time force-start-after
+Usage: python autoquest.py quest-id invite-time [force-start-after]
 
 where:
 * `quest-id` is the quest ID string.
@@ -65,7 +65,7 @@ def wait_until(then):
 # Parse arguments.
 
 if len(sys.argv) < 3:
-    log.info("Usage: python autoquest.py quest-id invite-time force-start-after")
+    log.info("Usage: python autoquest.py quest-id invite-time [force-start-after]")
     log.info("* quest-id is the quest to start")
     log.info("* invite-time is an HH:MM timestamp")
     log.info("* force-start-after is an integer number of minutes")
@@ -78,12 +78,15 @@ if len(sys.argv) < 3:
 
 quest_id = sys.argv[1]
 invite_time = parse_timestamp(sys.argv[2])
-try:
-    force_start_after = int(sys.argv[3])
-    force_start_time = invite_time + datetime.timedelta(minutes=force_start_after)
-except ValueError:
-    log.error(f"Invalid force-start-after value '{sys.argv[3]}'; expected integer")
-    sys.exit(ExitCodes.INVALID_INTEGER.value)
+if len(sys.argv) < 4:
+    force_start_time = None
+else:
+    try:
+        force_start_after = int(sys.argv[3])
+        force_start_time = invite_time + datetime.timedelta(minutes=force_start_after)
+    except ValueError:
+        log.error(f"Invalid force-start-after value '{sys.argv[3]}'; expected integer")
+        sys.exit(ExitCodes.INVALID_INTEGER.value)
 
 # Verify that we own the quest scroll.
 session = habitica.session()
@@ -106,21 +109,22 @@ log.info(f"Inviting party to quest {quest_id}...")
 result = session.invite_quest(quest_id)
 log.info(result)
 
-# Wait until quest force-start time.
-wait_until(force_start_time)
+if force_start_time is not None:
+    # Wait until quest force-start time.
+    wait_until(force_start_time)
 
-# Force-start the quest, if it hasn't already started.
-party = session.party()
-if party['quest']['active']:
-    active_quest_id = party['quest']['key']
-    log.info(f"Quest {active_quest_id} is already active.")
-    if quest_id != active_quest_id:
-        log.error(f"This is not the quest you were looking for! O_O")
+    # Force-start the quest, if it hasn't already started.
+    party = session.party()
+    if party['quest']['active']:
+        active_quest_id = party['quest']['key']
+        log.info(f"Quest {active_quest_id} is already active.")
+        if quest_id != active_quest_id:
+            log.error(f"This is not the quest you were looking for! O_O")
+        else:
+            log.info("All is well! ^_^")
     else:
-        log.info("All is well! ^_^")
-else:
-    log.info(f"Quest still not started... force starting!")
-    result = session.force_start_quest()
-    log.info(result)
+        log.info(f"Quest still not started... force starting!")
+        result = session.force_start_quest()
+        log.info(result)
 
 log.info("Quest shenanigans complete.")
