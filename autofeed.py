@@ -61,7 +61,7 @@ virtual_pets = {
     'Cactus-VirtualPet',
     'BearCub-VirtualPet',
 }
-wacky_pets = garden_pets.union(confection_pets).union(virtual_pets)
+wacky_pets = garden_pets | confection_pets | virtual_pets
 
 # These special pets must never be fed.
 special_pets = {
@@ -77,7 +77,7 @@ special_pets = {
     'Hippogriff-Hopeful',
 }
 
-do_not_feed = wacky_pets.union(special_pets)
+do_not_feed = wacky_pets | special_pets
 
 # These types of pets want only a certain kind of food.
 # Whereas quest pets (e.g. "Sunshine") love all foods.
