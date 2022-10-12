@@ -45,7 +45,7 @@ tasks = sorted(session.tasks(), key=lambda t: t['value'])
 
 if len(tasks) == 0:
     log.error("You have no tasks to use for smashing!")
-    sys.exit(ExitCodes.NO_TASKS_TO_SMASH)
+    sys.exit(ExitCodes.NO_TASKS_TO_SMASH.value)
 
 items = None
 if smash_count is None:
@@ -59,7 +59,7 @@ if smash_count is None:
         'hp' not in quest['progress'] or not quest['progress']['hp']
     ):
         log.error("No boss quest is active.")
-        sys.exit(ExitCodes.NO_BOSS_QUEST_ACTIVE)
+        sys.exit(ExitCodes.NO_BOSS_QUEST_ACTIVE.value)
     boss_hp = quest['progress']['hp']
 else:
     # Fetch profile. We need stats for the mana check,
@@ -73,7 +73,7 @@ else:
     mana = profile['stats']['mp']
     if needed_mana > mana:
         log.error(f"You need {needed_mana} mana, but only have {mana}!")
-        sys.exit(ExitCodes.INSUFFICIENT_MANA)
+        sys.exit(ExitCodes.INSUFFICIENT_MANA.value)
     log.info(f"Will use {needed_mana} of {mana} mana.")
 
 if items is None:
@@ -117,10 +117,10 @@ if smash_count is None:
         pending_damage = progress['up'] - progress['down']
         mana = profile['stats']['mp']
         log.info(f"* {round(pending_damage, 1)} damage queued " +
-            "vs {round(boss_hp, 1)} HP -- {int(mana)} mana left")
+            f"vs {round(boss_hp, 1)} HP -- {int(mana)} mana left")
 
         # Check for termination conditions.
-        if pending_damage < boss_hp:
+        if pending_damage >= boss_hp:
             log.info("Queued damage exceeds boss's remaining HP.")
             break
         if mana < 10:
