@@ -2,14 +2,14 @@
 while [ $# -gt 0 ]
 do
   echo
-  python3 wait-until.py 23:05
+  python3 wait-until.py 22:45
   echo
   echo "== Starting pre-smash quest =="
   test "$1" && python3 quest-start.py "$1"
   shift
 
   echo
-  python3 wait-until.py 23:45
+  python3 wait-until.py 23:50
   echo
   echo "== Smashing the boss =="
   python3 quest-force.py
