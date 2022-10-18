@@ -1,12 +1,28 @@
 #!/bin/sh
-while [ $# -gt 0 ]
+
+randomQuest() {
+  python3 quest-start.py | sed 's/.* //' |
+    grep -v '\(dustbunnies\|atom1\|vice1\|basilist\|goldenknight1\|moon2\|moon3\|moonstone1\|vice2\|stoikalmCalamity1\|stoikalmCalamity2\|stoikalmCalamity3\|mayhemMistiflying1\|mayhemMistiflying2\|mayhemMistiflying3\|dilatoryDistress1\|dilatoryDistress2\|dilatoryDistress3\|taskwoodsTerror1\|taskwoodsTerror2\|taskwoodsTerror3\|lostMasterclasser2\|lostMasterclasser3\|lostMasterclasser4\|cow\)' |
+    shuf | head -n1
+}
+
+startQuest() {
+  quest=$(randomQuest)
+  echo
+  echo "== Starting $1 quest =="
+  if [ "$quest" ]
+  then
+    python3 quest-start.py "$quest"
+  else
+    echo "No suitable quests owned!"
+  fi
+}
+
+while true
 do
   echo
   python3 wait-until.py 22:45
-  echo
-  echo "== Starting pre-smash quest =="
-  test "$1" && python3 quest-start.py "$1"
-  shift
+  startQuest pre-smash
 
   echo
   python3 wait-until.py 23:50
@@ -17,8 +33,5 @@ do
 
   echo
   python3 wait-until.py 01:30
-  echo
-  echo "== Starting post-smash quest =="
-  test "$1" && python3 quest-start.py "$1"
-  shift
+  startQuest pre-smash
 done
