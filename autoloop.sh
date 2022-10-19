@@ -1,7 +1,7 @@
 #!/bin/sh
 
 randomQuest() {
-  python3 quest-start.py | sed 's/.* //' |
+  python3 quest-start.py 2>&1 | grep '[0-9]x' | sed 's/.* //' |
     grep -v '\(dustbunnies\|atom1\|vice1\|basilist\|goldenknight1\|moon2\|moon3\|moonstone1\|vice2\|stoikalmCalamity1\|stoikalmCalamity2\|stoikalmCalamity3\|mayhemMistiflying1\|mayhemMistiflying2\|mayhemMistiflying3\|dilatoryDistress1\|dilatoryDistress2\|dilatoryDistress3\|taskwoodsTerror1\|taskwoodsTerror2\|taskwoodsTerror3\|lostMasterclasser2\|lostMasterclasser3\|lostMasterclasser4\|cow\)' |
     shuf | head -n1
 }
@@ -33,5 +33,5 @@ do
 
   echo
   python3 wait-until.py 01:30
-  startQuest pre-smash
+  startQuest post-smash
 done
