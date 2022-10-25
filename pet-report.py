@@ -113,17 +113,17 @@ pet_kinds_magic_potion = {
     'Fairy': '🧚',
     'Floral': '🌷', # ⚘💐🌻🌹🌸🌺
     'Fluorite': '💎',
-    'Frost': '☃️ ', # 🥶
+    'Frost': '☃️', # 🥶
     'Ghost': '👻',
     'Glass': '🪟',
     'Glow': '🌟',
     'Holly': '🍒',
-    'IcySnow': '❄️ ', # 🧊
+    'IcySnow': '❄️', # 🧊
     'Moonglow': '🎑', # 🌕
     'MossyStone': '🪨',
     'Onyx': '🖤',
     'Peppermint': '🍬',
-    'Polar': '🏔️ ',
+    'Polar': '🏔️',
     'PolkaDot': '👙',
     'Porcelain': '🚽',
     'Rainbow': '🌈',
@@ -136,11 +136,11 @@ pet_kinds_magic_potion = {
     'Silver': '🪞', # 🥈
     'SolarSystem': '🪐', # 🌌
     'Spooky': '👻',
-    'StainedGlass': '🖼️ ',
+    'StainedGlass': '🖼️',
     'StarryNight': '🌃',
     'Sunset': '🌇',
-    'Sunshine': '☀️ ',
-    'Thunderstorm': '🌩️ ',
+    'Sunshine': '☀️',
+    'Thunderstorm': '🌩️',
     'Turquoise': '💎',
     'Vampire': '🧛',
     'Watery': '🌊',
@@ -201,8 +201,8 @@ pet_symbols = {
     'Sloth': '🦥',
     'Snail': '🐌',
     'Snake': '🐍',
-    'Spider': '🕷 ',
-    'Squirrel': '🐿 ',
+    'Spider': '🕷',
+    'Squirrel': '🐿',
     'TRex': '🦖',
     'TigerCub': '🐯', # 🐅
     'Treeling': '🌴', # 🌳🌲🎋
@@ -215,6 +215,28 @@ pet_symbols = {
     'Yarn': '🧶',
     'Squid': '🦑', # NOT ACTUALLY ONE OF THEM
 }
+
+# -- Platform-specific spacing hacks --
+
+# Most emoji are 2 characters wide in most fixed-width font scenarios.
+# But a few are only 1 character wide in some cases (fonts? terminals? OSes?).
+# This represents a best effort to pad out the ones that don't align otherwise.
+
+padded_kinds = ['Frost', 'IcySnow', 'Polar', 'StainedGlass', 'Sunshine', 'Thunderstorm']
+padded_species = ['Spider', 'Squirrel']
+
+from sys import platform
+if platform == 'darwin':
+    # This change is needed only for iTerm2.
+    # With Terminal, it misaligns these items.
+    # But I use iTerm2, so nyeh.
+    padded_kinds.extend(('Glass', 'MossyStone', 'Silver'))
+    padded_species.extend(('Beetle',))
+
+for kind in padded_kinds:
+    pet_kinds_magic_potion[kind] += ' '
+for species in padded_species:
+    pet_symbols[species] += ' '
 
 # -- Quest scrolls --
 
