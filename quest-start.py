@@ -4,9 +4,6 @@ A script to start a quest.
 Usage: python quest-start.py quest-id
 
 where `quest-id` is the quest ID string.
-
-If you run `python quest-start.py` with no arguments,
-the program lists the IDs of quests that you own.
 """
 
 import enum, logging, sys
@@ -24,10 +21,7 @@ class ExitCodes(enum.Enum):
 # Parse arguments.
 
 if len(sys.argv) < 2:
-    log.info("Available quests:")
-    for quest_id, count in habitica.session().profile('items')['items']['quests'].items():
-        if count > 0:
-            log.info(f"* {count}x {quest_id}")
+    print("Usage: python quest-start.py quest-id")
     sys.exit(ExitCodes.INVALID_USAGE.value)
 
 quest_id = sys.argv[1]
