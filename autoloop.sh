@@ -22,7 +22,15 @@ while true
 do
   echo
   python3 wait-until.py 22:45
-  startQuest pre-smash
+  startQuest pre-smash-2245
+
+  echo
+  python3 wait-until.py 23:05
+  startQuest pre-smash-2305
+
+  echo
+  python3 wait-until.py 23:25
+  startQuest pre-smash-2325
 
   echo
   python3 wait-until.py 23:50
@@ -33,5 +41,5 @@ do
 
   echo
   python3 wait-until.py 01:30
-  startQuest post-smash
+  startQuest post-smash-0130
 done
