@@ -12,7 +12,7 @@ startQuest() {
   echo "== Starting $1 quest =="
   if [ "$quest" ]
   then
-    python3 quest-start.py "$quest"
+    python3 quest-invite.py "$quest"
   else
     echo "No suitable quests owned!"
   fi

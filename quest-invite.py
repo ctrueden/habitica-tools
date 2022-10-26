@@ -1,7 +1,7 @@
 """
-A script to start a quest.
+A script to invite your party to a quest.
 
-Usage: python quest-start.py quest-id
+Usage: python quest-invite.py quest-id
 
 where `quest-id` is the quest ID string.
 """
@@ -21,7 +21,7 @@ class ExitCodes(enum.Enum):
 # Parse arguments.
 
 if len(sys.argv) < 2:
-    print("Usage: python quest-start.py quest-id")
+    print("Usage: python quest-invite.py quest-id")
     sys.exit(ExitCodes.INVALID_USAGE.value)
 
 quest_id = sys.argv[1]
