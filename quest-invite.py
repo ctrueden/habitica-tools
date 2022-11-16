@@ -17,6 +17,7 @@ class ExitCodes(enum.Enum):
     INVALID_USAGE = enum.auto()
     QUEST_NOT_OWNED = enum.auto()
     QUEST_ALREADY_ACTIVE = enum.auto()
+    INVITATION_ALREADY_PENDING = enum.auto()
 
 # Parse arguments.
 
@@ -39,6 +40,9 @@ party = session.party()
 if party['quest']['active']:
     log.error(f"Quest already active: {party['quest']['key']}")
     sys.exit(ExitCodes.QUEST_ALREADY_ACTIVE.value)
+if party['quest']['key']:
+    log.error(f"Quest invitation already pending: {party['quest']['key']}")
+    sys.exit(ExitCodes.INVITATION_ALREADY_PENDING.value)
 
 # Invite party to the quest.
 log.info(f"Inviting party to quest {quest_id}...")
