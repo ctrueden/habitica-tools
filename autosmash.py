@@ -81,9 +81,22 @@ if items is None:
     log.info("Fetching items...")
     items = session.profile('items')['items']
 
+owned = items['gear']['owned']
+equipped = items['gear']['equipped']
+
+def equip(gear):
+    for slot, item in gear.items():
+        if equipped[slot] != item:
+            if item in owned and owned[item]:
+                session.equip('equipped', item)
+                log.info(f"* {slot}: {equipped[slot]} -> {item}")
+                equipped[slot] = item
+            else:
+                log.warning(f'Cannot equip unowned item {item}')
+
 # Equip best STR gear.
 log.info("Equipping best STR gear...")
-str_gear = {
+equip({
     'armor': 'armor_special_finnedOceanicArmor',
     'head': 'head_special_2',
     'shield': 'shield_special_lootBag',
@@ -92,18 +105,7 @@ str_gear = {
     'body': 'body_special_aetherAmulet',
 #    'back': 'back_special_aetherCloak',
 #    'eyewear': 'eyewear_special_aetherMask',
-}
-owned = items['gear']['owned']
-equipped = items['gear']['equipped']
-original_gear = {}
-for slot, item in str_gear.items():
-    if equipped[slot] != item:
-        if item in owned and owned[item]:
-            original_gear[slot] = equipped[slot]
-            session.equip('equipped', item)
-            log.info(f"* {slot}: {original_gear[slot]} -> {item}")
-        else:
-            log.warning(f'Cannot equip unowned item {item}')
+})
 
 # Autosmash!
 log.info("Applying DPS...")
@@ -137,9 +139,16 @@ else:
         smash(task, f"* [{t+1}/{smash_count}]")
 
 # Restore original equipment.
-log.info("Restoring original gear...")
-for slot, item in original_gear.items():
-    session.equip('equipped', item)
-    log.info(f"* {slot}: re-equipped {item}")
+log.info("Equipping best INT gear...")
+equip({
+    'armor': 'armor_special_2',
+    'head': 'head_special_2',
+    'shield': 'shield_special_diamondStave',
+    'weapon': 'weapon_special_nomadsScimitar',
+#    'headAccessory': 'headAccessory_armoire_comicalArrow',
+    'body': 'body_armoire_lifeguardWhistle',
+    'back': 'back_special_aetherCloak',
+    'eyewear': 'eyewear_armoire_tragedyMask',
+})
 
 log.info("Done! :-)")
