@@ -291,16 +291,26 @@ class HabiticaSession:
 
     def _get(self, url, params=None):
         if params is None: params = {}
-        return self._result(
-            requests.get(url, params=params, headers=self._headers)
-        )
+        return self._result(self._try(
+            lambda: requests.get(url, params=params, headers=self._headers)
+        ))
 
     def _post(self, url, params=None, body=None):
         if params is None: params = {}
         if body is None: body = {}
-        return self._result(
-            requests.post(url, json=body, params=params, headers=self._headers)
-        )
+        return self._result(self._try(
+            lambda: requests.post(url, json=body, params=params, headers=self._headers)
+        ))
+
+    def _try(self, f, max_retries=5, cooldown=20):
+        for i in range(1, max_retries + 1):
+            try:
+                return f()
+            except Exception as exc:
+                self._error(f"[{i}/{max_retries}] Error communicating with Habitica: {exc}")
+                if i == max_retries:
+                    raise exc
+                sleep(cooldown)
 
     def _result(self, response):
         if not response.ok:
