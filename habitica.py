@@ -6,7 +6,7 @@ It currently implements only a small subset of the available API functions.
 But the groundwork is in place to add more functions easily as needed;
 see https://habitica.com/apidoc/ for Habitica's API documentation.
 """
-import json, os
+import json, os, time
 import requests
 
 
@@ -310,7 +310,7 @@ class HabiticaSession:
                 self._error(f"[{i}/{max_retries}] Error communicating with Habitica: {exc}")
                 if i == max_retries:
                     raise exc
-                sleep(cooldown)
+                time.sleep(cooldown)
 
     def _result(self, response):
         if not response.ok:
