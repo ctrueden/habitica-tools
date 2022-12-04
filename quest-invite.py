@@ -40,7 +40,7 @@ party = session.party()
 if party['quest']['active']:
     log.error(f"Quest already active: {party['quest']['key']}")
     sys.exit(ExitCodes.QUEST_ALREADY_ACTIVE.value)
-if party['quest']['key']:
+if 'key' in party['quest'] and party['quest']['key']:
     log.error(f"Quest invitation already pending: {party['quest']['key']}")
     sys.exit(ExitCodes.INVITATION_ALREADY_PENDING.value)
 
