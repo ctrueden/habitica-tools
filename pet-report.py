@@ -10,6 +10,8 @@ import math
 import sys
 import time
 
+from collections import defaultdict
+
 import habitica
 
 log = logging.getLogger(__name__)
@@ -358,7 +360,7 @@ quest_scroll_bundles = {
 #>>> p['items']['pets'].keys()
 #dict_keys(['Dragon-CottonCandyBlue', 'TigerCub-White', 'Cactus-RoyalPurple', 'Fox-CottonCandyBlue', 'Wolf-Golden', 'BearCub-Shade', 'LionCub-Golden', 'Dragon-Golden', 'Wolf-Shade', 'Dragon-Skeleton', 'Fox-Desert', 'LionCub-CottonCandyPink', 'Wolf-Base', 'TigerCub-Base', 'LionCub-Desert', 'LionCub-Skeleton', 'TigerCub-Desert', 'FlyingPig-Golden', 'PandaCub-RoyalPurple', 'PandaCub-Red', 'Cactus-Skeleton', 'Dragon-Shade', 'Wolf-Desert', 'Wolf-Zombie', 'Dragon-Zombie', 'LionCub-Base', 'LionCub-Shade', 'Fox-Red', 'Wolf-Skeleton', ..., 'Wolf-Sunshine', 'TigerCub-Floral', 'TigerCub-Sunshine', 'LionCub-Floral', 'LionCub-Sunshine', 'Fox-Floral', 'Fox-Sunshine', 'FlyingPig-Floral', 'FlyingPig-Sunshine', 'Cactus-Floral', 'Cactus-Sunshine', 'Pterodactyl-Base', 'Pterodactyl-White', 'Pterodactyl-CottonCandyBlue', 'Pterodactyl-Skeleton', 'Pterodactyl-Desert', 'Pterodactyl-Red', 'TRex-Shade', 'TRex-Golden', 'TRex-Zombie', 'TRex-Base', 'TRex-White', 'TRex-Desert', 'TRex-Red', 'TRex-Skeleton', 'TRex-CottonCandyPink', 'Triceratops-Base', 'Triceratops-White', 'Triceratops-Desert', 'Triceratops-Red', 'Triceratops-Skeleton', 'Triceratops-CottonCandyPink', 'Triceratops-CottonCandyBlue', 'Pterodactyl-CottonCandyPink', 'TRex-CottonCandyBlue', 'Beetle-Golden', 'Axolotl-Golden', 'Snail-Golden', 'Snail-Shade', 'Axolotl-Shade', ... 'Snail-Zombie', 'Axolotl-Zombie', 'Beetle-Zombie', 'Horse-Golden', 'Horse-Zombie', 'Horse-Shade', 'Alligator-Golden', 'Alligator-Zombie', 'Alligator-Shade', 'Octopus-Zombie', 'Octopus-Golden', 'Octopus-Shade', 'Cuttlefish-Shade', 'Cuttlefish-Zombie', 'Cuttlefish-Golden', 'Cow-Shade', 'Cow-Zombie', 'Cow-Golden', 'Rat-Golden', 'Rat-Zombie', 'Rat-Shade', 'Rat-Base', 'Rat-White', 'Rat-Red', 'Horse-Base', 'Horse-White', 'Horse-CottonCandyBlue', 'Hedgehog-Golden', 'Hedgehog-Shade', 'Hedgehog-Zombie', 'Dragon-Porcelain', 'Dragon-Moonglow', 'BearCub-Porcelain', 'BearCub-Moonglow', 'PandaCub-Porcelain', 'PandaCub-Moonglow', 'Hedgehog-Base', 'Hedgehog-White', 'Hedgehog-Red', 'Hedgehog-CottonCandyBlue', 'Hedgehog-CottonCandyPink', 'Hedgehog-Skeleton', 'Hedgehog-Desert', 'Deer-Golden', 'Deer-Shade', 'Deer-Zombie', 'Horse-Red', 'Horse-CottonCandyPink', 'Horse-Skeleton', 'Treeling-Golden', 'Treeling-Shade', 'Treeling-Zombie', 'Rat-Desert', 'Rat-Skeleton', 'Rat-CottonCandyPink', 'Deer-Base', 'Deer-White', 'Deer-Red', 'Deer-Skeleton', 'Deer-CottonCandyBlue', 'Deer-Desert', 'Deer-CottonCandyPink', 'Horse-Desert', 'Treeling-Base', 'Treeling-White', 'Treeling-Red', 'Treeling-Skeleton', 'Treeling-CottonCandyBlue', 'Treeling-Desert', 'Phoenix-Base', 'Hippogriff-Hopeful', ...
 
-colors = {
+colors = defaultdict(lambda: '') if any(arg == '--no-colors' for arg in sys.argv) else {
     'reset': '[0m',
     'black': '[0;30m',
     'red': '[0;31m',
