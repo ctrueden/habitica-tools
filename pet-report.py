@@ -125,6 +125,7 @@ pet_kinds_magic_potion = {
     'MossyStone': '🪨',
     'Onyx': '🖤',
     'Peppermint': '🍬',
+    'PinkMarble': '🔮',
     'Polar': '🏔️',
     'PolkaDot': '👙',
     'Porcelain': '🚽',
