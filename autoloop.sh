@@ -2,8 +2,8 @@
 
 randomQuest() {
   python3 quest-list.py 2>&1 | grep '[0-9]x' | sed 's/.* //' |
-    grep -v '\(dustbunnies\|atom1\|vice1\|basilist\|goldenknight1\|moonstone1\|vice2\|stoikalmCalamity1\|stoikalmCalamity2\|stoikalmCalamity3\|mayhemMistiflying1\|mayhemMistiflying2\|mayhemMistiflying3\|dilatoryDistress1\|dilatoryDistress2\|dilatoryDistress3\|taskwoodsTerror1\|taskwoodsTerror2\|taskwoodsTerror3\|lostMasterclasser2\|lostMasterclasser3\|lostMasterclasser4\|cow\)' |
-    shuf | head -n1
+    grep -v '\(dustbunnies\|atom1\|vice1\|basilist\|goldenknight1\|moonstone1\|vice2\|stoikalmCalamity1\|stoikalmCalamity2\|stoikalmCalamity3\|mayhemMistiflying1\|mayhemMistiflying2\|mayhemMistiflying3\|dilatoryDistress1\|dilatoryDistress2\|dilatoryDistress3\|taskwoodsTerror1\|taskwoodsTerror2\|taskwoodsTerror3\|lostMasterclasser1\|lostMasterclasser2\|lostMasterclasser3\|lostMasterclasser4\|cow\)' |
+    sort -R | head -n1
 }
 
 startQuest() {
