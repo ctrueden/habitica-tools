@@ -150,7 +150,7 @@ pet_kinds_magic_potion = {
     'Windup': '🦾',
 }
 
-pet_kinds_special = { 'Veggie', 'VirtualPet' }
+pet_kinds_special = { 'Veggie', 'VirtualPet', 'TeaShop' }
 
 pet_kinds = pet_kinds_standard | pet_kinds_magic_potion.keys() | pet_kinds_special
 
