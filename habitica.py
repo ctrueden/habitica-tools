@@ -303,14 +303,20 @@ class HabiticaSession:
         ))
 
     def _try(self, f, max_retries=5, cooldown=20):
+        errors = []
         for i in range(1, max_retries + 1):
+            if i > 1: time.sleep(cooldown)
+            prefix = "[{i}/{max_retries}]"
             try:
-                return f()
+                response = f()
+                if response.ok: return response
+                errors.append(str(response.status_code))
+                self._error(f"{prefix} Server returned bad status: {errors[-1]}")
             except Exception as exc:
-                self._error(f"[{i}/{max_retries}] Error communicating with Habitica: {exc}")
-                if i == max_retries:
-                    raise exc
-                time.sleep(cooldown)
+                self._error(f"{prefix} Error communicating with Habitica: {exc}")
+                errors.append(exc)
+                if i == max_retries: raise exc
+        raise RuntimeError("Request failed {max_retries} times:{'\n* '.join(errors)}")
 
     def _result(self, response):
         if not response.ok:
