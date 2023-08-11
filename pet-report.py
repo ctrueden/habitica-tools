@@ -200,7 +200,7 @@ pet_symbols = {
     'SeaSerpent': '🐍',
     'Seahorse': '🐴',
     'Sheep': '🐑',
-    'Slime': '💩' , # 🦠🫠 
+    'Slime': '💩' , # 🦠🫠
     'Sloth': '🦥',
     'Snail': '🐌',
     'Snake': '🐍',

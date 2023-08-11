@@ -123,7 +123,7 @@ class HabiticaSession:
                           "completedTodos" type returns only the 30 most
                           recently completed.
 
-                          Allowed values: habits, dailys, todos, rewards, completedTodos 
+                          Allowed values: habits, dailys, todos, rewards, completedTodos
 
         :param due_date: Optional date to use for computing the nextDue field
                          for each returned task.
@@ -156,7 +156,7 @@ class HabiticaSession:
                          defensiveStance, valorousPresence, intimidate,
                          pickPocket, backStab, toolsOfTrade, stealth, heal,
                          protectAura, brightness, healAll, snowball,
-                         spookySparkles, seafoam, shinySeed 
+                         spookySparkles, seafoam, shinySeed
 
         :param target_id: Query parameter, necessary if the spell is cast on a
                           party member or task. Not used if the spell is casted
