@@ -131,6 +131,7 @@ pet_kinds_magic_potion = {
     'Porcelain': '🚽',
     'Rainbow': '🌈',
     'RoseQuartz': '💎',
+    'RoseGold': '💗',
     'RoyalPurple': '🟣',
     'Ruby': '🔴',
     'SandSculpture': '🏰', # 🏖️
@@ -151,6 +152,13 @@ pet_kinds_magic_potion = {
 }
 
 pet_kinds_special = { 'Veggie', 'VirtualPet', 'TeaShop' }
+
+unique_pets = {
+    'Gryphatrice-Jubilant',
+    'Hippogriff-Hopeful',
+    'Turkey-Gilded',
+    'Wolf-Veteran',
+}
 
 pet_kinds = pet_kinds_standard | pet_kinds_magic_potion.keys() | pet_kinds_special
 
@@ -434,3 +442,7 @@ for kind, symbol in sorted(pet_kinds_magic_potion.items()):
         f"| {potion_count:>7} " +
         f"| {shortage:>8} " +
         f"|{colors['reset']}")
+
+for p, _ in pets.items():
+    if p not in unique_pets and p[p.rindex("-")+1:] not in pet_kinds:
+        print(f"{colors[color]}[WARNING] Unknown pet type! {p}{colors['reset']}")
