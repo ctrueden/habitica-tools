@@ -76,6 +76,16 @@ class HabiticaSession:
         self.log = log
 
 
+    # -- Cron --
+
+
+    def cron(self):
+        """
+        This causes cron to run. It will immediately apply damage for incomplete due Dailies.
+        """
+        return self._post(f'https://habitica.com/api/v3/cron')
+
+
     # -- Group --
 
 

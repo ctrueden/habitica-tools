@@ -34,13 +34,24 @@ do
   startQuest pre-smash-2325
 
   echo
-  python3 wait-until.py 23:50
+  python3 wait-until.py 23:59
   echo
   echo "== Smashing the boss =="
   python3 quest-force.py
   python3 autosmash.py
+  echo "Waiting 60 seconds..."
+  sleep 60
+  python3 autocron.py
 
   echo
-  python3 wait-until.py 01:30
-  startQuest post-smash-0130
+  python3 wait-until.py 00:15
+  startQuest post-smash-0015
+
+  echo
+  python3 wait-until.py 00:45
+  startQuest post-smash-0045
+
+  echo
+  python3 wait-until.py 01:15
+  startQuest post-smash-0115
 done
