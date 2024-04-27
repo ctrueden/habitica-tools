@@ -1,7 +1,10 @@
 #!/bin/sh
 
 randomQuest() {
-  python3 quest-list.py 2>&1 | grep '[0-9]x' | sed 's/.* //' |
+  override=fungi
+  quests=$(python3 quest-list.py 2>&1)
+  echo "$quests" | grep -q "$override" && echo "$override" ||
+  echo "$quests" | grep '[0-9]x' | sed 's/.* //' |
     grep -v '\(dustbunnies\|atom1\|vice1\|basilist\|goldenknight1\|moonstone1\|vice2\|stoikalmCalamity1\|stoikalmCalamity2\|mayhemMistiflying1\|mayhemMistiflying2\|dilatoryDistress1\|dilatoryDistress2\|taskwoodsTerror1\|taskwoodsTerror2\|lostMasterclasser1\|lostMasterclasser2\|lostMasterclasser3\|lostMasterclasser4\|cow\|seaserpent\|treeling\)' |
     sort -R | head -n1
 }
