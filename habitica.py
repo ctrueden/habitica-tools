@@ -326,7 +326,8 @@ class HabiticaSession:
                 self._error(f"{prefix} Error communicating with Habitica: {exc}")
                 errors.append(exc)
                 if i == max_retries: raise exc
-        raise RuntimeError("Request failed {max_retries} times:{'\n* '.join(errors)}")
+        error_lines = "\n* ".join(errors)
+        raise RuntimeError(f"Request failed {max_retries} times:{error_lines}")
 
     def _result(self, response):
         if not response.ok:
