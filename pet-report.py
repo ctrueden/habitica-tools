@@ -156,6 +156,7 @@ pet_kinds_special = { 'Fungi', 'Veggie', 'VirtualPet', 'TeaShop' }
 unique_pets = {
     'Gryphatrice-Jubilant',
     'Hippogriff-Hopeful',
+    'Tiger-Veteran',
     'Turkey-Gilded',
     'Wolf-Veteran',
 }
