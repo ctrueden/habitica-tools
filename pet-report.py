@@ -43,7 +43,7 @@ pet_species = {
     'Chameleon': 'chameleon',
     'Cheetah': 'cheetah',
     'Cow': 'cow',
-    'Cuttlefish': '???', # TODO
+    'Cuttlefish': 'kraken',
     'Deer': 'ghost_stag',
     'Dolphin': 'dolphin',
     'Dragon': None,
@@ -352,7 +352,7 @@ quest_scrolls_other = {
 quest_scrolls = quest_scrolls_pet | quest_scrolls_magic_hatching_potion | quest_scrolls_other
 
 quest_scroll_bundles = {
-    'aquaticAmigos': [], # TODO
+    'aquaticAmigos': ['axolotl', 'kraken', 'octopus'],
     'birdBuddies': [], # TODO
     'cuddleBuddies': [], # TODO
     'delightfulDinos': [], # TODO
@@ -360,7 +360,7 @@ quest_scroll_bundles = {
     'featheredFriends': [], # TODO
     'forestFriends': [], # TODO
     'hugabug': [], # TODO
-    'jungleBuddies': [], # TODO
+    'jungleBuddies': ['monkey', 'treeling', 'sloth'],
     'mythicalMarvels': [], # TODO
     'oddballs': [], # TODO
     'rockingReptiles': [], # TODO
