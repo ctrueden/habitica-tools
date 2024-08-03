@@ -40,6 +40,7 @@ pet_species = {
     'Bunny': 'bunny',
     'Butterfly': 'butterfly',
     'Cactus': None,
+    'Chameleon': 'chameleon',
     'Cheetah': 'cheetah',
     'Cow': 'cow',
     'Cuttlefish': '???', # TODO
@@ -121,6 +122,7 @@ pet_kinds_magic_potion = {
     'Glow': '🌟',
     'Holly': '🍒',
     'IcySnow': '❄️', # 🧊
+    'Koi': '🐠',
     'Moonglow': '🎑', # 🌕
     'MossyStone': '🪨',
     'Onyx': '🖤',
@@ -166,13 +168,14 @@ pet_kinds = pet_kinds_standard | pet_kinds_magic_potion.keys() | pet_kinds_speci
 pet_symbols = {
     'Alligator': '🐊',
     'Armadillo': '🐾',
-    'Axolotl': '🦎',
+    'Axolotl': '🦎', # 𓆈
     'Badger': '🦡',
     'BearCub': '🐻',
     'Beetle': '🪲',
     'Bunny': '🐇', # 🐰
     'Butterfly': '🦋',
     'Cactus': '🌵',
+    'Chameleon': '𓆈', # 🦎
     'Cheetah': '🐆',
     'Cow': '🐄', # 🐮
     'Cuttlefish': '🐡', # 🐟🐠
@@ -193,7 +196,7 @@ pet_symbols = {
     'Kangaroo': '🦘',
     'LionCub': '🦁',
     'Monkey': '🐒', # 🐵
-    'Nudibranch': '🐠', # 🐟🐡
+    'Nudibranch': '🐟', # 🐠🐡
     'Octopus': '🐙',
     'Owl': '🦉',
     'Parrot': '🦜',
@@ -235,7 +238,7 @@ pet_symbols = {
 # This represents a best effort to pad out the ones that don't align otherwise.
 
 padded_kinds = ['Frost', 'IcySnow', 'Polar', 'StainedGlass', 'Sunshine', 'Thunderstorm']
-padded_species = ['Spider', 'Squirrel']
+padded_species = ['Chameleon', 'Spider', 'Squirrel']
 
 from sys import platform
 if platform == 'darwin':
