@@ -1,7 +1,7 @@
 #!/bin/sh
 
 randomQuest() {
-  override=fungi
+  override=raccoon
   quests=$(python3 quest-list.py 2>&1)
   echo "$quests" | grep -q "$override" && echo "$override" ||
   echo "$quests" | grep '[0-9]x' | sed 's/.* //' |
