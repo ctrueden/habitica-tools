@@ -356,7 +356,7 @@ quest_scroll_bundles = {
     'birdBuddies': [], # TODO
     'cuddleBuddies': [], # TODO
     'delightfulDinos': [], # TODO
-    'farmFriends': [], # TODO
+    'farmFriends': ['horse', 'sheep', 'cow'],
     'featheredFriends': [], # TODO
     'forestFriends': [], # TODO
     'hugabug': [], # TODO
