@@ -70,6 +70,7 @@ pet_species = {
     'Penguin': 'penguin',
     #'PolarBear': 'N/A',
     'Pterodactyl': 'pterodactyl',
+    'Raccoon': 'raccoon',
     'Rat': 'rat',
     'Robot': 'robot',
     'Rock': 'rock',
@@ -204,6 +205,7 @@ pet_symbols = {
     'Penguin': '🐧',
     #'PolarBear': '🐻‍❄️',
     'Pterodactyl': '🐦', # 🦕
+    'Raccoon': '🦝',
     'Rat': '🐀',
     'Robot': '🤖',
     'Rock': '🗿', # 🪨
@@ -260,10 +262,10 @@ quest_scrolls_pet = {
     'cheetah', 'cow', 'dilatory_derby', 'dolphin', 'egg', 'falcon', 'ferret',
     'frog', 'ghost_stag', 'gryphon', 'guineapig', 'harpy', 'hedgehog', 'hippo',
     'horse', 'kangaroo', 'kraken', 'monkey', 'nudibranch', 'octopus', 'owl',
-    'peacock', 'penguin', 'pterodactyl', 'rat', 'robot', 'rock', 'rooster',
-    'sabretooth', 'seaserpent', 'sheep', 'slime', 'sloth', 'snail', 'snake',
-    'spider', 'squirrel', 'treeling', 'trex', 'trex_undead', 'triceratops',
-    'turtle', 'unicorn', 'velociraptor', 'whale', 'yarn'
+    'peacock', 'penguin', 'pterodactyl', 'raccoon', 'rat', 'robot', 'rock',
+    'rooster', 'sabretooth', 'seaserpent', 'sheep', 'slime', 'sloth', 'snail',
+    'snake', 'spider', 'squirrel', 'treeling', 'trex', 'trex_undead',
+    'triceratops', 'turtle', 'unicorn', 'velociraptor', 'whale', 'yarn'
 }
 
 quest_scrolls_magic_hatching_potion = {
