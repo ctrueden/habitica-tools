@@ -119,6 +119,7 @@ pet_kinds_magic_potion = {
     'Fluorite': '💎',
     'Frost': '☃️', # 🥶
     'Ghost': '👻',
+    'Gingerbread': '🍪',
     'Glass': '🪟',
     'Glow': '🌟',
     'Holly': '🍒',
