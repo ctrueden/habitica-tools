@@ -40,6 +40,7 @@ pet_species = {
     'Bunny': 'bunny',
     'Butterfly': 'butterfly',
     'Cactus': None,
+    'Cat': 'cat',
     'Chameleon': 'chameleon',
     'Cheetah': 'cheetah',
     'Cow': 'cow',
@@ -177,6 +178,7 @@ pet_symbols = {
     'Bunny': '🐇', # 🐰
     'Butterfly': '🦋',
     'Cactus': '🌵',
+    'Cat': '🐈',
     'Chameleon': '𓆈', # 🦎
     'Cheetah': '🐆',
     'Cow': '🐄', # 🐮
