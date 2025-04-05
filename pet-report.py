@@ -156,7 +156,7 @@ pet_kinds_magic_potion = {
     'Windup': '🦾',
 }
 
-pet_kinds_special = { 'Fungi', 'Veggie', 'VirtualPet', 'TeaShop' }
+pet_kinds_special = { 'Cryptid', 'Fungi', 'TeaShop', 'Veggie', 'VirtualPet' }
 
 unique_pets = {
     'Gryphatrice-Jubilant',
