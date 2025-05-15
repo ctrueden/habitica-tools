@@ -70,6 +70,7 @@ pet_species = {
     'Peacock': 'peacock',
     'Penguin': 'penguin',
     #'PolarBear': 'N/A',
+    'Platypus': 'platypus',
     'Pterodactyl': 'pterodactyl',
     'Raccoon': 'raccoon',
     'Rat': 'rat',
@@ -207,6 +208,7 @@ pet_symbols = {
     'Peacock': '🦚',
     'Penguin': '🐧',
     #'PolarBear': '🐻‍❄️',
+    'Platypus': '🦫', # 🦆
     'Pterodactyl': '🐦', # 🦕
     'Raccoon': '🦝',
     'Rat': '🐀',
