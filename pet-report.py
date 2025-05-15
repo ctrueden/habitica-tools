@@ -260,16 +260,7 @@ for species in padded_species:
 
 # -- Quest scrolls --
 
-quest_scrolls_pet = {
-    'armadillo', 'axolotl', 'badger', 'beetle', 'bunny', 'butterfly',
-    'cheetah', 'cow', 'dilatory_derby', 'dolphin', 'egg', 'falcon', 'ferret',
-    'frog', 'ghost_stag', 'gryphon', 'guineapig', 'harpy', 'hedgehog', 'hippo',
-    'horse', 'kangaroo', 'kraken', 'monkey', 'nudibranch', 'octopus', 'owl',
-    'peacock', 'penguin', 'pterodactyl', 'raccoon', 'rat', 'robot', 'rock',
-    'rooster', 'sabretooth', 'seaserpent', 'sheep', 'slime', 'sloth', 'snail',
-    'snake', 'spider', 'squirrel', 'treeling', 'trex', 'trex_undead',
-    'triceratops', 'turtle', 'unicorn', 'velociraptor', 'whale', 'yarn'
-}
+quest_scrolls_pet = set(pet_species.values()) - {None}
 
 quest_scrolls_magic_hatching_potion = {
     'amber', 'blackPearl', 'bronze', 'fluorite', 'onyx', 'ruby', 'silver',
