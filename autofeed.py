@@ -68,15 +68,11 @@ special_pets = {
     'JackOLantern-Glow',
     'Gryphatrice-Jubilant',
 }
-
 do_not_feed = wacky_pets | special_pets
 
 # These types of pets want only a certain kind of food.
 # Whereas quest pets (e.g. "Sunshine") love all foods.
-picky_pet_types = {
-    "Base", "White", "Desert", "Red", "Shade", "Skeleton",
-    "Zombie", "CottonCandyPink", "CottonCandyBlue", "Golden"
-}
+picky_pet_types = food_mapping.values()
 
 def optimal_pet_type_for_food(food):
     if food in food_mapping:
