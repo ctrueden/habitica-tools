@@ -27,41 +27,25 @@ food_mapping = {
     "Honey": "Golden",
 }
 
-# These wacky pets must never be fed.
-garden_pets = {
-    'Wolf-Veggie',
-    'TigerCub-Veggie',
-    'PandaCub-Veggie',
-    'LionCub-Veggie',
-    'Fox-Veggie',
-    'FlyingPig-Veggie',
-    'Dragon-Veggie',
-    'Cactus-Veggie',
-    'BearCub-Veggie',
+base_pets = {
+    'Wolf',
+    'TigerCub',
+    'PandaCub',
+    'LionCub',
+    'Fox',
+    'FlyingPig',
+    'Dragon',
+    'Cactus',
+    'BearCub',
 }
-confection_pets = {
-    'Wolf-Dessert',
-    'TigerCub-Dessert',
-    'PandaCub-Dessert',
-    'LionCub-Dessert',
-    'Fox-Dessert',
-    'FlyingPig-Dessert',
-    'Dragon-Dessert',
-    'Cactus-Dessert',
-    'BearCub-Dessert',
-}
-virtual_pets = {
-    'Wolf-VirtualPet',
-    'TigerCub-VirtualPet',
-    'PandaCub-VirtualPet',
-    'LionCub-VirtualPet',
-    'Fox-VirtualPet',
-    'FlyingPig-VirtualPet',
-    'Dragon-VirtualPet',
-    'Cactus-VirtualPet',
-    'BearCub-VirtualPet',
-}
-wacky_pets = garden_pets | confection_pets | virtual_pets
+# These wacky pets do not need feeding.
+wacky_pets = \
+    {f"{p}-Veggie" for p in base_pets} | \
+    {f"{p}-Dessert" for p in base_pets} | \
+    {f"{p}-VirtualPet" for p in base_pets} | \
+    {f"{p}-TeaShop" for p in base_pets} | \
+    {f"{p}-Fungi" for p in base_pets} | \
+    {f"{p}-Cryptid" for p in base_pets}
 
 # These special pets must never be fed.
 special_pets = {
