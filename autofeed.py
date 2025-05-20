@@ -65,16 +65,24 @@ wacky_pets = garden_pets | confection_pets | virtual_pets
 
 # These special pets must never be fed.
 special_pets = {
+    'Wolf-Veteran',
     'Hydra-Base', # Guess
     'Turkey-Base',
     'BearCub-Polar',
-    'MantisShrimp-Base', # Guess
+    'MantisShrimp-Base',
     'JackOLantern-Base',
     'Mammoth-Base',
+    'Tiger-Veteran',
     'Phoenix-Base',
+    'Turkey-Gilded',
     'MagicalBee-Base',
+    'Gryphon-RoyalPurple',
+    'JackOLantern-Ghost',
     'Jackalope-RoyalPurple',
+    'Orca-Base',
     'Hippogriff-Hopeful',
+    'JackOLantern-Glow',
+    'Gryphatrice-Jubilant',
 }
 
 do_not_feed = wacky_pets | special_pets
