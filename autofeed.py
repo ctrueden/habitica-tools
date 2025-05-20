@@ -88,48 +88,67 @@ def autofeed(session, profile):
     pets = profile['items']['pets']
     mounts = profile['items']['mounts']
 
+    def should_feed(pet, needed_pet_type=None):
+        score = pets[pet]
+        if pet in do_not_feed:
+            log.debug(f"Skipping wacky/special pet: {pet}")
+            return False
+        if score < 0:
+            log.debug(f"We do not have {pet}")
+            return False
+        if score >= 50:
+            log.debug(f"{pet} is already full")
+            return False
+        if pet in mounts and mounts[pet] is True:
+            log.debug(f"We already have {pet} as a mount")
+            return False
+        dash = pet.find("-")
+        if dash < 0:
+            log.warning(f"Skipping weird pet: {pet}")
+            return False
+        pet_type = pet[dash+1:]
+        if needed_pet_type is not None and pet_type != needed_pet_type:
+            # This pet is not the type we are looking for.
+            log.debug(f"Pet {pet} is not a {needed_pet_type}")
+            return False
+        return True
+
+    def feed_pet(pet, food):
+        score = pets[pet]
+        hunger = 50 - score
+        ideal_amount = math.ceil(hunger / 5)
+        amount = min(foods[food], ideal_amount)
+        log.info(f"Feeding {food} x{amount} to {pet}...")
+        time.sleep(2.1) # NB: Mitigate rate limit causing 401s.
+        session.feed(pet, food, amount)
+        pets[pet] += 5 * amount
+        foods[food] -= amount
+
+    # Feed picky pets first.
     for food, count in foods.items():
         if count == 0: continue
+
+        # Discern needed pet type for this food.
         needed_pet_type = optimal_pet_type_for_food(food)
         if needed_pet_type is None:
             if food != 'Saddle':
                 log.warning(f'Skipping unknown food: {food}')
             continue
 
-        # Now look for hungry pets of this type!
-        for pet, score in pets.items():
-            if pet in do_not_feed:
-                log.debug(f"Skipping wacky/special pet: {pet}")
-                continue
-            if score < 0:
-                log.debug(f"We do not have {pet}")
-                continue
-            if score >= 50:
-                log.debug(f"{pet} is already full")
-                continue
-            if pet in mounts and mounts[pet] is True:
-                log.debug(f"We already have {pet} as a mount")
-                continue
-            dash = pet.find("-")
-            if dash < 0:
-                log.warning(f"Skipping weird pet: {pet}")
-                continue
-            pet_type = pet[dash+1:]
-            if pet_type != needed_pet_type:
-                # This pet is not the type we are looking for.
-                log.debug(f"Pet {pet} is not a {needed_pet_type}")
-                continue
+        # Now look for hungry pets of this type.
+        for pet in pets:
+            if should_feed(pet, needed_pet_type):
+                # Found a matching pet! Now let's feed it.
+                feed_pet(pet, food)
+                if foods[food] == 0: break
 
-            # Found a matching pet! Now let's feed it.
-            hunger = 50 - score
-            ideal_amount = math.ceil(hunger / 5)
-            amount = min(count, ideal_amount)
-            log.info(f"Feeding {food} x{amount} to {pet}...")
-            time.sleep(2.1) # NB: Mitigate rate limit causing 401s.
-            session.feed(pet, food, amount)
-            pets[pet] += 5 * amount
-            count -= amount
-            if count == 0: break
+    # Now feed any other hungry (but not picky) pets.
+    for pet in pets:
+        while should_feed(pet):
+            # Find the most plentiful food.
+            amount, best_food = max((foods[food], food) for food in foods)
+            if amount == 0: return # We ran out of food!
+            feed_pet(pet, best_food)
 
 def main():
     session = habitica.session(log=log)
