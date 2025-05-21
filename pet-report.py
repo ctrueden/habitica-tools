@@ -64,6 +64,7 @@ pet_species = {
     'Monkey': 'monkey',
     'Nudibranch': 'nudibranch',
     'Octopus': 'octopus',
+    'Otter': 'otter',
     'Owl': 'owl',
     'PandaCub': None,
     'Parrot': 'harpy',
@@ -203,6 +204,7 @@ pet_symbols = {
     'Monkey': '🐒', # 🐵
     'Nudibranch': '🐟', # 🐠🐡
     'Octopus': '🐙',
+    'Otter': '🦦',
     'Owl': '🦉',
     'Parrot': '🦜',
     'Peacock': '🦚',
