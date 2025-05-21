@@ -365,7 +365,7 @@ quest_scroll_bundles = {
     'oddballs': [], # TODO
     'rockingReptiles': [], # TODO
     'sandySidekicks': [], # TODO
-    'splashyPals': [], # TODO
+    'splashyPals': ['turtle', 'whale', 'dilatory_derby'],
     'winterQuests': [], # TODO
     'witchyFamiliars': ['rat', 'spider', 'frog'],
 }
