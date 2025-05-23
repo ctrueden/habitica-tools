@@ -32,6 +32,7 @@ potions = profile['items']['hatchingPotions']
 
 pet_species = {
     'Alligator': 'alligator',
+    'Alpaca': 'alpaca',
     'Armadillo': 'armadillo',
     'Axolotl': 'axolotl',
     'Badger': 'badger',
@@ -46,6 +47,7 @@ pet_species = {
     'Cow': 'cow',
     'Cuttlefish': 'kraken',
     'Deer': 'ghost_stag',
+    'Dog': 'dog',
     'Dolphin': 'dolphin',
     'Dragon': None,
     'Egg': 'egg',
@@ -54,6 +56,7 @@ pet_species = {
     'FlyingPig': None,
     'Fox': None,
     'Frog': 'frog',
+    'Giraffe': 'giraffe',
     'Gryphon': 'gryphon',
     'GuineaPig': 'guineapig',
     'Hedgehog': 'hedgehog',
@@ -105,7 +108,165 @@ pet_kinds_standard = {
     'Golden', 'Red', 'Shade', 'Skeleton', 'White', 'Zombie'
 }
 
-pet_kinds_magic_potion = {
+pet_kinds_potion = {
+    'Amber': 'amber',
+    'Aquatic': 'aquatic',
+    'Aurora': 'aurora',
+    'AutumnLeaf': 'autumnLeaf',
+    'BirchBark': 'birchBark',
+    'BlackPearl': 'blackPearl',
+    'Bronze': 'bronze',
+    'Celestial': 'celestial',
+    'Cupid': 'cupid',
+    'Dessert': 'dessert',
+    'Ember': 'ember',
+    'Fairy': 'fairy',
+    'Floral': 'floral',
+    'Fluorite': 'fluorite',
+    'Frost': 'frost',
+    'Ghost': 'ghost',
+    'Gingerbread': 'gingerbread',
+    'Glass': 'glass',
+    'Glow': 'glow',
+    'Holly': 'holly',
+    'IcySnow': 'icySnow',
+    'Koi': 'koi',
+    'Moonglow': 'moonglow',
+    'MossyStone': 'stone',
+    'Onyx': 'onyx',
+    'Peppermint': 'peppermint',
+    'PinkMarble': 'pinkMarble',
+    'Polar': 'polar',
+    'PolkaDot': 'polkaDot',
+    'Porcelain': 'porcelain',
+    'Rainbow': 'rainbow',
+    'RoseQuartz': 'roseQuartz',
+    'RoseGold': 'roseGold',
+    'RoyalPurple': 'royalPurple',
+    'Ruby': 'ruby',
+    'SandSculpture': 'sandSculpture',
+    'Shadow': 'shadow',
+    'Shimmer': 'shimmer',
+    'Silver': 'silver',
+    'SolarSystem': 'solarSystem',
+    'Spooky': 'spooky',
+    'StainedGlass': 'stainedGlass',
+    'StarryNight': 'starryNight',
+    'Sunset': 'sunset',
+    'Sunshine': 'sunshine',
+    'Thunderstorm': 'thunderstorm',
+    'Turquoise': 'turquoise',
+    'Vampire': 'vampire',
+    'Watery': 'watery',
+    'Windup': 'windup',
+}
+
+pet_kinds_wacky = {
+    'Cryptid': 'cryptid',
+    'Dessert': 'waffle',
+    'Fungi': 'fungi',
+    'TeaShop': 'teaShop',
+    'Veggie': 'veggie',
+    'VirtualPet': 'virtualPet',
+}
+
+unique_pets = {
+    'Wolf-Veteran',
+    'Hydra-Base', # Guess
+    'Turkey-Base',
+    'BearCub-Polar',
+    'MantisShrimp-Base',
+    'JackOLantern-Base',
+    'Mammoth-Base',
+    'Tiger-Veteran',
+    'Phoenix-Base',
+    'Turkey-Gilded',
+    'MagicalBee-Base',
+    'Gryphon-RoyalPurple',
+    'JackOLantern-Ghost',
+    'Jackalope-RoyalPurple',
+    'Orca-Base',
+    'Hippogriff-Hopeful',
+    'JackOLantern-Glow',
+    'Gryphatrice-Jubilant',
+}
+
+pet_kinds = pet_kinds_standard | pet_kinds_potion.keys() | pet_kinds_wacky.keys()
+
+symbols = {
+    # == Species ==
+    'Alligator': '🐊',
+    'Alpaca': '🦙',
+    'Armadillo': '🐾',
+    'Axolotl': '🦎', # 𓆈
+    'Badger': '🦡',
+    'BearCub': '🐻',
+    'Beetle': '🪲',
+    'Bunny': '🐇', # 🐰
+    'Butterfly': '🦋',
+    'Cactus': '🌵',
+    'Cat': '🐈',
+    'Chameleon': '𓆈', # 🦎
+    'Cheetah': '🐆',
+    'Cow': '🐄', # 🐮
+    'Cuttlefish': '🐡', # 🐟🐠
+    'Deer': '🦌',
+    'Dog': '🐕',
+    'Dolphin': '🐬',
+    'Dragon': '🐉', # 🐲
+    'Egg': '🥚',
+    'Falcon': '🦅',
+    'Ferret': '🐾',
+    'FlyingPig': '🐖', # 🐷
+    'Fox': '🦊',
+    'Frog': '🐸',
+    'Giraffe': '🦒',
+    'Gryphon': '🦅', # 🦁
+    'GuineaPig': '🐹',
+    'Hedgehog': '🦔',
+    'Hippo': '🦛',
+    'Horse': '🐎', # 🐴
+    'Kangaroo': '🦘',
+    'LionCub': '🦁',
+    'Monkey': '🐒', # 🐵
+    'Nudibranch': '🐟', # 🐠🐡
+    'Octopus': '🐙',
+    'Otter': '🦦',
+    'Owl': '🦉',
+    'Parrot': '🦜',
+    'Peacock': '🦚',
+    'Penguin': '🐧',
+    #'PolarBear': '🐻‍❄️',
+    'Platypus': '🦫', # 🦆
+    'Pterodactyl': '🐦', # 🦕
+    'Raccoon': '🦝',
+    'Rat': '🐀',
+    'Robot': '🤖',
+    'Rock': '🗿', # 🪨
+    'Rooster': '🐓', # 🐔
+    'Sabretooth': '🐅', # 🐯
+    'SeaSerpent': '🐍',
+    'Seahorse': '🐴',
+    'Sheep': '🐑',
+    'Slime': '💩' , # 🦠🫠
+    'Sloth': '🦥',
+    'Snail': '🐌',
+    'Snake': '🐍',
+    'Spider': '🕷',
+    'Squirrel': '🐿',
+    'TRex': '🦖',
+    'TigerCub': '🐯', # 🐅
+    'Treeling': '🌴', # 🌳🌲🎋
+    'Triceratops': '🦕',
+    'Turtle': '🐢',
+    'Unicorn': '🦄',
+    'Velociraptor': '🦖',
+    'Whale': '🐋', # 🐳
+    'Wolf': '🐺',
+    'Yarn': '🧶',
+    'Squid': '🦑', # NOT ACTUALLY ONE OF THEM
+
+    # == Magic potions ==
     'Amber': '🔶',
     'Aquatic': '🌊',
     'Aurora': '🌆', # 🎇🎆
@@ -158,118 +319,34 @@ pet_kinds_magic_potion = {
     'Windup': '🦾',
 }
 
-pet_kinds_special = { 'Cryptid', 'Fungi', 'TeaShop', 'Veggie', 'VirtualPet' }
-
-unique_pets = {
-    'Gryphatrice-Jubilant',
-    'Hippogriff-Hopeful',
-    'Tiger-Veteran',
-    'Turkey-Gilded',
-    'Wolf-Veteran',
-}
-
-pet_kinds = pet_kinds_standard | pet_kinds_magic_potion.keys() | pet_kinds_special
-
-pet_symbols = {
-    'Alligator': '🐊',
-    'Armadillo': '🐾',
-    'Axolotl': '🦎', # 𓆈
-    'Badger': '🦡',
-    'BearCub': '🐻',
-    'Beetle': '🪲',
-    'Bunny': '🐇', # 🐰
-    'Butterfly': '🦋',
-    'Cactus': '🌵',
-    'Cat': '🐈',
-    'Chameleon': '𓆈', # 🦎
-    'Cheetah': '🐆',
-    'Cow': '🐄', # 🐮
-    'Cuttlefish': '🐡', # 🐟🐠
-    'Deer': '🦌',
-    'Dolphin': '🐬',
-    'Dragon': '🐉', # 🐲
-    'Egg': '🥚',
-    'Falcon': '🦅',
-    'Ferret': '🐾',
-    'FlyingPig': '🐖', # 🐷
-    'Fox': '🦊',
-    'Frog': '🐸',
-    'Gryphon': '🦅', # 🦁
-    'GuineaPig': '🐹',
-    'Hedgehog': '🦔',
-    'Hippo': '🦛',
-    'Horse': '🐎', # 🐴
-    'Kangaroo': '🦘',
-    'LionCub': '🦁',
-    'Monkey': '🐒', # 🐵
-    'Nudibranch': '🐟', # 🐠🐡
-    'Octopus': '🐙',
-    'Otter': '🦦',
-    'Owl': '🦉',
-    'Parrot': '🦜',
-    'Peacock': '🦚',
-    'Penguin': '🐧',
-    #'PolarBear': '🐻‍❄️',
-    'Platypus': '🦫', # 🦆
-    'Pterodactyl': '🐦', # 🦕
-    'Raccoon': '🦝',
-    'Rat': '🐀',
-    'Robot': '🤖',
-    'Rock': '🗿', # 🪨
-    'Rooster': '🐓', # 🐔
-    'Sabretooth': '🐅', # 🐯
-    'SeaSerpent': '🐍',
-    'Seahorse': '🐴',
-    'Sheep': '🐑',
-    'Slime': '💩' , # 🦠🫠
-    'Sloth': '🦥',
-    'Snail': '🐌',
-    'Snake': '🐍',
-    'Spider': '🕷',
-    'Squirrel': '🐿',
-    'TRex': '🦖',
-    'TigerCub': '🐯', # 🐅
-    'Treeling': '🌴', # 🌳🌲🎋
-    'Triceratops': '🦕',
-    'Turtle': '🐢',
-    'Unicorn': '🦄',
-    'Velociraptor': '🦖',
-    'Whale': '🐋', # 🐳
-    'Wolf': '🐺',
-    'Yarn': '🧶',
-    'Squid': '🦑', # NOT ACTUALLY ONE OF THEM
-}
-
 # -- Platform-specific spacing hacks --
 
 # Most emoji are 2 characters wide in most fixed-width font scenarios.
 # But a few are only 1 character wide in some cases (fonts? terminals? OSes?).
 # This represents a best effort to pad out the ones that don't align otherwise.
 
-padded_kinds = ['Frost', 'IcySnow', 'Polar', 'StainedGlass', 'Sunshine', 'Thunderstorm']
-padded_species = ['Chameleon', 'Spider', 'Squirrel']
+padded_symbols = [
+    'Chameleon', 'Spider', 'Squirrel',
+    'Frost', 'IcySnow', 'Polar', 'StainedGlass', 'Sunshine', 'Thunderstorm'
+]
 
 from sys import platform
 if platform == 'darwin':
     # This change is needed only for iTerm2.
     # With Terminal, it misaligns these items.
     # But I use iTerm2, so nyeh.
-    padded_kinds.extend(('Glass', 'MossyStone', 'Silver'))
-    padded_species.extend(('Beetle',))
+    padded_symbols.extend(('Beetle', 'Glass', 'MossyStone', 'Silver'))
 
-for kind in padded_kinds:
-    pet_kinds_magic_potion[kind] += ' '
-for species in padded_species:
-    pet_symbols[species] += ' '
+for name in padded_symbols:
+    symbols[name] += ' '
 
 # -- Quest scrolls --
 
-quest_scrolls_pet = set(pet_species.values()) - {None}
+quest_scrolls_pet = set(pet_species.values()) - {None} | {'trex'}
 
-quest_scrolls_magic_hatching_potion = {
-    'amber', 'blackPearl', 'bronze', 'fluorite', 'onyx', 'ruby', 'silver',
-    'stone', 'turquoise'
-}
+quest_scrolls_potion = set(pet_kinds_potion.values()) - {None}
+
+quest_scrolls_wacky = set(pet_kinds_wacky.values()) - {None}
 
 quest_scrolls_other = {
     'atom1', # unlockable
@@ -308,7 +385,6 @@ quest_scrolls_other = {
     'vice1', # unlockable
     'vice2', # unlockable
     'vice3', # unlockable
-    'waffle', # ???
     'atom1_soapBars', # old name?
     'dilatoryDistress1_blueFins', # old name?
     'dilatoryDistress1_fireCoral', # old name?
@@ -349,7 +425,11 @@ quest_scrolls_other = {
     'vice2_lightCrystal', # old name?
 }
 
-quest_scrolls = quest_scrolls_pet | quest_scrolls_magic_hatching_potion | quest_scrolls_other
+quest_scrolls = \
+    quest_scrolls_pet | \
+    quest_scrolls_potion | \
+    quest_scrolls_wacky | \
+    quest_scrolls_other
 
 quest_scroll_bundles = {
     'aquaticAmigos': ['axolotl', 'kraken', 'octopus'],
@@ -407,7 +487,7 @@ for species, quest_scroll in sorted(pet_species.items()):
     else: color = 'red'
 
     print(f"{colors[color]}" +
-        f"| {pet_symbols[species]} " +
+        f"| {symbols[species]} " +
         f"| {species:12} " +
         f"| {len(my_pets):>2}/{standard_kinds_count} " +
         f"|  {len(my_mounts):>2}/{standard_kinds_count} " +
@@ -419,14 +499,15 @@ for species, quest_scroll in sorted(pet_species.items()):
 print()
 print("### Magic hatching potion pets ###")
 print()
-print(f"|    | MAGIC POTION  | PETS | MOUNTS | POTIONS | SHORTAGE |")
-print(f"|----|:--------------|-----:|-------:|--------:|---------:|")
+print(f"|    | MAGIC POTION  | PETS | MOUNTS | POTIONS | QUESTS | SHORTAGE |")
+print(f"|----|:--------------|-----:|-------:|--------:|-------:|---------:|")
 standard_pets_count = len([species for species, quest_scroll in pet_species.items() if quest_scroll is None])
-for kind, symbol in sorted(pet_kinds_magic_potion.items()):
+for kind, quest_scroll in sorted(pet_kinds_potion.items()):
     my_pets = {f"{p}:{hunger}" for p, hunger in pets.items() if p.endswith(f"-{kind}") and hunger > 0}
     my_mounts = {f"{m}" for m, v in mounts.items() if m.endswith(f"-{kind}") and v is True}
     potion_count = potions[kind] if kind in potions else 0
-    shortage = 2 * standard_pets_count - len(my_pets) - len(my_mounts) - potion_count
+    quest_count = quests[quest_scroll] if quest_scroll in quests else 0
+    shortage = 2 * standard_pets_count - len(my_pets) - len(my_mounts) - potion_count - 3 * quest_count
 
     if shortage <= 0:
         color = 'blue'
@@ -436,14 +517,19 @@ for kind, symbol in sorted(pet_kinds_magic_potion.items()):
     else: color = 'red'
 
     print(f"{colors[color]}" +
-        f"| {symbol} " +
+        f"| {symbols[kind]} " +
         f"| {kind:13} " +
         f"| {len(my_pets):>2}/{standard_pets_count} " +
         f"|   {len(my_mounts):>2}/{standard_pets_count} " +
         f"| {potion_count:>7} " +
+        f"| {quest_count:>6} " +
         f"| {shortage:>8} " +
         f"|{colors['reset']}")
 
-for p, _ in pets.items():
+for p in pets:
     if p not in unique_pets and p[p.rindex("-")+1:] not in pet_kinds:
-        print(f"{colors[color]}[WARNING] Unknown pet type! {p}{colors['reset']}")
+        print(f"{colors['red']}[WARNING] Unknown pet type! {p}{colors['reset']}")
+
+for qs in quests:
+    if qs not in quest_scrolls:
+        print(f"{colors['red']}[WARNING] Unknown quest scroll! {qs}{colors['reset']}")
