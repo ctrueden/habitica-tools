@@ -34,19 +34,34 @@ Where `12345678-abcd-9876-0123-456789abcdef` is your Habitica user's
 
 Then, `chmod 600 config.json` to ensure no one but you can read the contents.
 
-## Feeding
+## Available functions
+
+To run the scripts, I recommend using
+[uv](https://docs.astral.sh/uv/getting-started/installation/),
+the modern Python project management tool. One `uv` is installed,
+the commands below should work without worrying about dependencies.
+
+Alternately, if you hate new things that are awesome, you can
+install the `requests` dependency yourself, perhaps with
+```shell
+pip install --break-system-packages --user requests
+```
+and then the below scripts will run directly e.g. `python autofeed.py`.
+But it's literally the same number of characters. :-)
+
+### Feeding
 
 ```shell
-python autofeed.py
+uv run autofeed.py
 ```
 
 No options. The script feeds the optimal food to the first pet that needs it,
 repeatedly, until no more optimal food/pet pairings remain in your inventory.
 
-## Smashing
+### Smashing
 
 ```shell
-python autosmash.py 15
+uv run autosmash.py 15
 ```
 where `15` is the number of smashes to perform. Brutal Smash will be used
 sequentially on each task, starting from the lowest valued (reddest) task.
@@ -57,40 +72,40 @@ exceeds the current boss's HP, or you run out of mana, whichever comes first.
 Before smashing, the script equips the best STR gear, and then
 after smashing is complete, re-equips your original gear.
 
-## Questing
+### Questing
 
-### Listing quests you own
+#### Listing quests you own
 
 ```shell
-python quest-list.py
+uv run quest-list.py
 ```
 
 The IDs for all quests you own will be listed, with inventory counts.
 
-### Inviting your party to a quest
+#### Inviting your party to a quest
 
 ```shell
-python quest-invite.py quest-id
+uv run quest-invite.py quest-id
 ```
 where `quest-id` is the quest ID string.
 
-### Force a quest to start immediately
+#### Force a quest to start immediately
 
 ```shell
-python quest-force.py
+uv run quest-force.py
 ```
 
 No options. If a quest is currently pending, it will be force-started.
 Otherwise, nothing happens.
 
-## Waiting
+### Waiting
 
 ```shell
-python wait-until.py desired-time
+uv run wait-until.py desired-time
 ```
 where `desired-time` is an `HH:MM` timestamp e.g. `23:10`.
 
-## Using the session API
+### Using the session API
 
 ```python
 import habitica
