@@ -91,7 +91,7 @@ pet_species = {
     'Snake': 'snake',
     'Spider': 'spider',
     'Squirrel': 'squirrel',
-    'TRex': 'trex_undead', # also 'trex'?
+    'TRex': 'trex_undead', # also 'trex'
     'TigerCub': None,
     'Treeling': 'treeling',
     'Triceratops': 'triceratops',
@@ -435,7 +435,7 @@ quest_scroll_bundles = {
     'aquaticAmigos': ['axolotl', 'kraken', 'octopus'],
     'birdBuddies': [], # TODO
     'cuddleBuddies': [], # TODO
-    'delightfulDinos': [], # TODO
+    'delightfulDinos': ['triceratops', 'trex', 'pterodactyl'],
     'farmFriends': ['horse', 'sheep', 'cow'],
     'featheredFriends': [], # TODO
     'forestFriends': [], # TODO
@@ -444,7 +444,7 @@ quest_scroll_bundles = {
     'mythicalMarvels': [], # TODO
     'oddballs': [], # TODO
     'rockingReptiles': [], # TODO
-    'sandySidekicks': [], # TODO
+    'sandySidekicks': ['spider', 'snake', 'armadillo'],
     'splashyPals': ['turtle', 'whale', 'dilatory_derby'],
     'winterQuests': [], # TODO
     'witchyFamiliars': ['rat', 'spider', 'frog'],
