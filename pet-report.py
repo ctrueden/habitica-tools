@@ -323,19 +323,17 @@ symbols = {
 
 # Most emoji are 2 characters wide in most fixed-width font scenarios.
 # But a few are only 1 character wide in some cases (fonts? terminals? OSes?).
-# This represents a best effort to pad out the ones that don't align otherwise.
+# This represents a lazy effort to pad out the ones that don't align otherwise.
 
 padded_symbols = [
-    'Chameleon', 'Spider', 'Squirrel',
-    'Frost', 'IcySnow', 'Polar', 'StainedGlass', 'Sunshine', 'Thunderstorm'
+    'Chameleon', 'Spider', 'Squirrel'
 ]
 
 from sys import platform
-if platform == 'darwin':
-    # This change is needed only for iTerm2.
-    # With Terminal, it misaligns these items.
-    # But I use iTerm2, so nyeh.
-    padded_symbols.extend(('Beetle', 'Glass', 'MossyStone', 'Silver'))
+if platform != 'darwin':
+    padded_symbols.extend((
+        'Frost', 'IcySnow', 'Polar', 'StainedGlass', 'Sunshine', 'Thunderstorm'
+    ))
 
 for name in padded_symbols:
     symbols[name] += ' '
